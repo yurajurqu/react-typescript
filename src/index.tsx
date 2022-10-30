@@ -1,13 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-interface Props {
+interface AppProps {
     color?: string;
 }
 
-class App extends React.Component<Props> {
+interface AppState {
+    counter: number;
+}
+
+class App extends React.Component<AppProps, AppState> {
+
+    // state ={
+    //     counter: 0
+    // }
+    constructor(props: AppProps){
+        super(props);
+        this.state = {
+            counter: 0
+        }
+    }
+
+    onUp = (): void =>{
+        this.setState({counter: this.state.counter+1})
+    }
+    onDown = (): void =>{
+        this.setState({counter: this.state.counter-1})
+    }
+
     render(){
-        return <div>{this.props.color}</div>
+        return (
+            <div>
+                <button onClick={this.onUp}>+</button>
+                {this.state.counter}
+                <button onClick={this.onDown}>-</button>
+            </div>
+        )
     }
 }
 
