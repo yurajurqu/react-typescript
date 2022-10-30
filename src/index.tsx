@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-class App extends React.Component {
+interface Props {
+    color?: string;
+}
+
+class App extends React.Component<Props> {
     render(){
-        return <div>Hello</div>
+        return <div>{this.props.color}</div>
     }
 }
 
 ReactDOM.createRoot(document.getElementById('root')!)
-.render(<App></App>);
+.render(<App ></App>);
+// .render(<App color="green"></App>);
